@@ -10,7 +10,6 @@ const Card = () => {
     const rect = scope.current.getBoundingClientRect();
     const parentRect = scope.current.parentElement.getBoundingClientRect();
 
-    // Menghitung posisi kartu relatif terhadap parent-nya
     const relativeX = e.clientX - parentRect.left - rect.width / 2;
     const relativeY = e.clientY - parentRect.top - rect.height / 2;
 
@@ -22,7 +21,6 @@ const Card = () => {
     const element = scope.current;
     const rect = element.getBoundingClientRect();
 
-    // Membatasi pergerakan kartu agar tetap di dalam parent
     const maxX = scope.current.parentElement.offsetWidth - rect.width;
     const maxY = scope.current.parentElement.offsetHeight - rect.height;
 
