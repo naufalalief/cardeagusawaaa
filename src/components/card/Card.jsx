@@ -8,7 +8,7 @@ const Card = ({ content, variant, X, Y }) => {
 
   const animated = () => {
     let offsetX, offsetY;
-    const movedistance = 30;
+    const movedistance = 50;
     if (variant === "normal") {
       offsetX = X > 0 ? Math.min(X, -movedistance) : Math.max(X, movedistance);
       offsetY = Y > 0 ? Math.min(Y, -movedistance) : Math.max(Y, movedistance);
@@ -31,6 +31,9 @@ const Card = ({ content, variant, X, Y }) => {
       },
       {
         duration: 0.2,
+        delay: 0.1,
+        type: "spring",
+        damping: 100,
       }
     );
   }, [X, Y, variant]);
