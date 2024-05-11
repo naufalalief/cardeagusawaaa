@@ -26,18 +26,18 @@ const Card = () => {
   const handlePosition = (e) => {
     const rect = scope.current.getBoundingClientRect();
     const parentRect = scope.current.parentElement.getBoundingClientRect();
-    const movespeed = 10; // aturen speed e mek
+    const movedistance = 10; // aturen jarak e mek
     const relativeX = e.clientX - parentRect.left - rect.width / 2;
     const relativeY = e.clientY - parentRect.top - rect.width / 2;
     const movementX =
       relativeX > 0
-        ? Math.min(relativeX, -movespeed)
-        : Math.max(relativeX, movespeed);
+        ? Math.min(relativeX, -movedistance)
+        : Math.max(relativeX, movedistance);
 
     const movementY =
       relativeY > 0
-        ? Math.min(relativeY, -movespeed)
-        : Math.max(relativeY, movespeed);
+        ? Math.min(relativeY, -movedistance)
+        : Math.max(relativeY, movedistance);
     setPosX(movementX);
     setPosY(movementY);
   };
