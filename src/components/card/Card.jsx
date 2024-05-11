@@ -108,7 +108,7 @@ const Card = ({ content, variant, X, Y }) => {
       className="bg-rose-50 rounded p-10"
       ref={scope}
       // onMouseMove={handlePosition}
-      onMouseLeave={handleLeave}
+      // onMouseLeave={handleLeave}
     >
       <div
         className="w-64 p-6 flex items-center justify-center bg-white border border-gray-200 rounded-lg shadow "
