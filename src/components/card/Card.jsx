@@ -11,7 +11,7 @@ const Card = ({ content, variant }) => {
   const handlePosition = (e) => {
     const rect = scope.current.getBoundingClientRect();
     const parentRect = scope.current.getBoundingClientRect();
-    const movedistance = 10;
+    const movedistance = 30;
     const relativeX = e.clientX - parentRect.left - rect.width / 2;
     const relativeY = e.clientY - parentRect.top - rect.width / 2;
 
@@ -80,9 +80,9 @@ const Card = ({ content, variant }) => {
         y: posY,
       },
       {
-        duration: 1,
-        type: "tween",
-        stiffness: 100,
+        duration: 0.2,
+        type: "spring",
+        damping: 100,
       }
     );
   }, [posX, posY]);
