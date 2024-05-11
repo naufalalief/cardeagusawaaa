@@ -90,7 +90,7 @@ const Card = ({ content, variant }) => {
   return (
     <div
       //iki absolute e tak pindah nak cardlayout soale 2 card
-      className="bg-rose-50 rounded p-10"
+      className="bg-rose-50 rounded-full p-20"
       ref={scope}
       onMouseMove={handlePosition}
       onMouseLeave={handleLeave}
