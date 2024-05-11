@@ -1,27 +1,10 @@
 import { useAnimate } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
-const Card = () => {
+const Card = ({}) => {
   const [scope, animate] = useAnimate();
   const [posX, setPosX] = useState(0);
   const [posY, setPosY] = useState(0);
-
-  // const handlePosition = (e) => {
-  //   const rect = scope.current.getBoundingClientRect();
-  //   const clientX = e.clientX;
-  //   const clientY = e.clientY;
-  //   const padding = 50;
-
-  //   if (clientX < rect.left + padding) {
-  //     setPosX(10);
-  //   } else if (clientX > rect.right - padding) {
-  //     setPosX(-10);
-  //   } else if (clientY < rect.top + padding) {
-  //     setPosY(10);
-  //   } else if (clientY > rect.bottom - padding) {
-  //     setPosY(-10);
-  //   }
-  // };
 
   const handlePosition = (e) => {
     const rect = scope.current.getBoundingClientRect();
@@ -29,17 +12,35 @@ const Card = () => {
     const movedistance = 10; // aturen jarak e mek
     const relativeX = e.clientX - parentRect.left - rect.width / 2;
     const relativeY = e.clientY - parentRect.top - rect.width / 2;
-    const movementX =
+
+    // let offsetX, offsetY;
+
+    // if (movementDirections === "horizontal") {
+    //   if (relativeX > 0) {
+    //     offsetX = Math.min(relativeX, -movedistance);
+    //   } else if (relativeX < 0) {
+    //     offsetX = Math.max(relativeX, movedistance);
+    //   }
+    // } else if (movementDirections === "vertical") {
+    //   if (relativeY > 0) {
+    //     offsetY = Math.min(relativeY, -movedistance);
+    //   } else if (relativeY < 0) {
+    //     offsetY = Math.max(relativeY, movedistance);
+    //   }
+    // }
+
+    const offsetX =
       relativeX > 0
         ? Math.min(relativeX, -movedistance)
         : Math.max(relativeX, movedistance);
 
-    const movementY =
+    const offsetY =
       relativeY > 0
         ? Math.min(relativeY, -movedistance)
         : Math.max(relativeY, movedistance);
-    setPosX(movementX);
-    setPosY(movementY);
+
+    setPosX(offsetX);
+    setPosY(offsetY);
   };
 
   const handleLeave = () => {
