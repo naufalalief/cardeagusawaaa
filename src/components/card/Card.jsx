@@ -8,66 +8,45 @@ const Card = () => {
 
   const handlePosition = (e) => {
     const rect = scope.current.getBoundingClientRect();
-    const parentRect = scope.current.parentElement.getBoundingClientRect();
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+    const padding = 10;
 
-    const relativeX = e.clientX - parentRect.left - rect.width / 2;
-    const relativeY = e.clientY - parentRect.top - rect.height / 2;
+    if (clientX < rect.left + padding) {
+      setPosX(2);
+    } else if (clientX > rect.right - padding) {
+      setPosX(-2);
+    } else if (clientY < rect.top + padding) {
+      setPosY(2);
+    } else if (clientY > rect.bottom - padding) {
+      setPosY(-2);
+    }
+  };
 
-    setPosX(relativeX);
-    setPosY(relativeY);
+  const handleLeave = () => {
+    setPosX((prevPosX) => (prevPosX !== undefined ? 0 : prevPosX));
+    setPosY((prevPosY) => (prevPosY !== undefined ? 0 : prevPosY));
   };
 
   useEffect(() => {
-    const element = scope.current;
-    const rect = element.getBoundingClientRect();
-
-    const maxX = scope.current.parentElement.offsetWidth - rect.width;
-    const maxY = scope.current.parentElement.offsetHeight - rect.height;
-
     animate("#target", {
-      x: Math.max(0, Math.min(maxX, posX)),
-      y: Math.max(0, Math.min(maxY, posY)),
+      x: posX,
+      y: posY,
     });
   }, [posX, posY]);
 
   return (
-    <div className="absolute p-10" ref={scope}>
+    <div
+      className="absolute bg-rose-50 p-6 rounded"
+      ref={scope}
+      onMouseMove={handlePosition}
+      onMouseLeave={handleLeave}
+    >
       <div
         className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
         id="target"
-        onMouseMove={handlePosition}
       >
-        <a href="/">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Noteworthy technology acquisitions 2021
-          </h5>
-        </a>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          Here are the biggest enterprise technology acquisitions of 2021 so
-          far, in reverse chronological order.
-        </p>
-        <a
-          href="/"
-          className="inline-flex 
-items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Read more
-          <svg
-            className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 14 10"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M1 5h12m0 0L9 1m4 4L9 9"
-            />
-          </svg>
-        </a>
+        Test
       </div>
     </div>
   );
