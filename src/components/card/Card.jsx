@@ -81,6 +81,8 @@ const Card = ({ content, variant }) => {
       },
       {
         duration: 1,
+        type: "tween",
+        stiffness: 100,
       }
     );
   }, [posX, posY]);
