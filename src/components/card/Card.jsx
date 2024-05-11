@@ -11,11 +11,9 @@ const Card = ({ content, variant, X, Y }) => {
     const movedistance = 30;
     if (variant === "normal") {
       offsetX = X > 0 ? Math.min(X, -movedistance) : Math.max(X, movedistance);
-
       offsetY = Y > 0 ? Math.min(Y, -movedistance) : Math.max(Y, movedistance);
     } else if (variant === "inverted") {
       offsetX = X < 0 ? Math.max(X, -movedistance) : Math.min(X, movedistance);
-
       offsetY = Y < 0 ? Math.max(Y, -movedistance) : Math.min(Y, movedistance);
     }
 
@@ -26,19 +24,19 @@ const Card = ({ content, variant, X, Y }) => {
   useEffect(() => {
     animated();
     animate(
-      "#target",
+      scope.current,
       {
         x: posX,
         y: posY,
       },
       {
-        duration: 0.5,
+        duration: 0.2,
       }
     );
   }, [X, Y, variant]);
 
   return (
-    <div className="bg-rose-50 rounded p-10" ref={scope}>
+    <div className="bg-rose-50 rounded p-4" ref={scope}>
       <div
         className="w-64 p-6 flex items-center justify-center bg-white border border-gray-200 rounded-lg shadow "
         id="target"
