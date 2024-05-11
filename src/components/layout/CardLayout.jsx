@@ -10,9 +10,9 @@ const CardLayout = ({ children }) => {
 
   const position = (e) => {
     const rect = scope.current.getBoundingClientRect();
-
-    const relX = e.clientX - rect.left - rect.width / 2;
-    const relY = e.clientY - rect.left - rect.width / 2;
+    const parentRect = scope.current.parentElement.getBoundingClientRect();
+    const relX = e.clientX - parentRect.left - rect.width / 2;
+    const relY = e.clientY - parentRect.left - rect.width / 2;
 
     setPosX(relX);
     setPosY(relY);

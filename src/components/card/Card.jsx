@@ -91,7 +91,7 @@ const Card = ({ content, variant, X, Y }) => {
   useEffect(() => {
     calculated();
     animate(
-      scope.current,
+      "#target",
       {
         x: posX,
         y: posY,
