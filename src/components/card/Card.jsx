@@ -30,8 +30,8 @@ const Card = ({ content, variant, X, Y }) => {
         y: posY,
       },
       {
-        duration: 0.2,
-        delay: 0.1,
+        duration: 0.8,
+        delay: 0.2,
         type: "spring",
         damping: 100,
       }
